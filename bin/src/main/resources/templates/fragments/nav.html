@@ -1,0 +1,40 @@
+<section class='section m-0 p-0' th:fragment="navigation">
+		<div class='container'>
+			<div class='columns'>
+				<div class='column is-12'>
+				
+					
+					<nav class="navbar is-transparent">
+					  <div class="navbar-brand">
+					  	<a class="navbar-item has-text-weight-bold" href="/">
+					  		<img alt="Kaimono" src="/img/daruma.png" />
+					  		<span>&nbsp;KaiMono</span>
+					  	</a>
+					    <div class="navbar-burger" data-target="navbarExampleTransparentExample">
+					      <span></span>
+					      <span></span>
+					      <span></span>
+					    </div>
+					  </div>
+					
+					  <div id="navbarExampleTransparentExample" class="navbar-menu">
+					    
+					
+					    <div class="navbar-end" sec:authorize="isAuthenticated()">
+					      <div class="navbar-item">
+							  <p class='subtitle is-size-6 m-0 mr-4'>
+								  Welcome, <strong sec:authentication="principal.username">user</strong>
+							  </p>
+					        <div class="field is-grouped">
+								<div class='buttons'>
+									<a class="button is-light has-text-weight-bold" th:href="@{/logout}">Log out</a>
+								</div>
+					        </div>
+					      </div>
+					    </div>
+					  </div>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>

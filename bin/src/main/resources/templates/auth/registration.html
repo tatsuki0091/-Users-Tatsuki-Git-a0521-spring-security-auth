@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html 
+	xmlns:th="https://www.thymeleaf.org" 
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="fragments/head :: head(title=${title})">
+<body>
+
+	<section class='section m-0 p-0' th:replace="fragments/nav :: navigation"></section>
+	
+	<section class='section m-0 p-0'>
+		<div class='container'>
+			<div class='columns'>
+				<div class='column is-9 is-offset-1'>
+					<div class='container mb-6'>
+						<div class='columns'>
+							<div class='column is-one-third is-offset-one-third'>
+								<h3 class='is-size-3 has-text-weight-bold mb-2 has-text-centered'>Sign up</h3>
+								<div class='box'>
+									
+									<!-- success message -->
+									<div th:if="${param.success}">
+										<div class="notification is-success">
+											You've successfully registered to our awesome app!
+										</div>
+									</div>
+
+									<form class="new_user" th:action="@{/registration}"  th:object="${user}" method="post">
+										<div class='field'>
+											<label class="label" for="firstName">First Name</label>
+											<div class='control has-icons-left has-icons-right'>
+												<input id="firstName" class="input" th:field="*{firstName}" required autofocus="autofocus" />
+												<span class='icon is-small is-left'>
+													<i class='fas fa-user'></i>
+												</span>
+											</div>
+										</div>
+										<div class='field'>
+											<label class="label" for="lastName">Last Name</label>
+											<div class='control has-icons-left has-icons-right'>
+												<input id="lastName" class="input" th:field="*{lastName}" required autofocus="autofocus" />
+												<span class='icon is-small is-left'>
+													<i class='fas fa-user'></i>
+												</span>
+											</div>
+										</div>
+										<div class='field'>
+											<label class="label" for="email">Email</label>
+											<div class='control has-icons-left has-icons-right'>
+												<input autofocus="autofocus" autocomplete="email" class="input" th:field="*{email}" id="email" />
+												<span class='icon is-small is-left'>
+													<i class='fas fa-envelope'></i>
+												</span>
+											</div>
+										</div>
+										<div class='field'>
+											<label class="label" for="password">Password</label>
+											<div class='control has-icons-left has-icons-right'>
+												<input autocomplete="new-password" class="input"
+													type="password" id="password" th:field="*{password}" />
+												<span class='icon is-small is-left'> <i
+													class='fas fa-lock'></i>
+												</span>
+											</div>
+										</div>
+										<div class='field'>
+											<div class='control has-text-centered'>
+												<input type="submit" name="commit" value="Sign up" class="button is-dark is-fullwidth" data-disable-with="Sign up" /> 
+												<br> 
+												<span class="has-text-weight-bold">Already registered? <a href="/" th:href="@{/login}">Login here</a></span>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section th:replace="fragments/footer :: footer"></section>
+</body>
+</html>
